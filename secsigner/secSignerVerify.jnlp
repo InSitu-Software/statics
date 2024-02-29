@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp
+  spec="1.0+"
+  codebase="http://replaceyourhost.yourdomain.topleveldomain/secSignerWebStart/"
+  href="secSignerVerify.jnlp">
+<information>
+  <title>SecSigner</title>
+  <vendor>SecCommerce Informationssysteme GmbH</vendor>
+  <homepage href="https://www.seccommerce.com/"/>
+</information>
+<security><all-permissions/></security>
+<resources>
+  <j2se version="1.6+"/>
+  <jar href="SecSigner.jar"/>
+  <jar href="SecSignerExt.jar"/>
+</resources>
+<application-desc main-class="seccommerce.secsigner.webstart.SecVerifierWebStart">
+
+<!-- Specify an URL _OR_ the document to be verified _OR_ fileopen -->
+<argument>-DocumentURL</argument> <argument>test/doc1.pdf</argument> 
+<argument>-SignatureURL</argument> <argument>test/doc1.pdf.pkcs7</argument>
+<!--<argument>-TimestampURL</argument> <argument>test/doc1.tsr</argument> -->
+<!--<argument>-OCSPResponseURL</argument> <argument>test/doc1.ors</argument> -->
+<!--<argument>-Base64Document</argument> <argument></argument> -->
+<!--<argument>-Base64Signature</argument> <argument></argument> -->
+<!--<argument>-Base64Timestamp</argument> <argument></argument> -->
+<!--<argument>-Base64OCSPResponse</argument> <argument></argument> -->
+	
+<!-- Only for XML-DSig: XPath to the signature node which shall be verified. If null then all 
+     signature nodes will be checked. Example "/test:testdoc/test:car" -->
+<!--<argument>-XmlDSigNodePathBase64</argument> <argument>L3Rlc3Q6dGVzdGRvYy90ZXN0OmNhcg==</argument> -->
+
+<!-- Post signature and additional params to an URL, it posts "Signature=..." as a base64 coded PKCS7 object -->
+<argument>-PostURL</argument> <argument>http://localhost/seccom/</argument> 
+
+<!-- (optional) Post signed data: "on" or "off" -->
+<!-- <argument>-PostSignedData</argument> <argument>on</argument> -->
+
+<!-- Save data extracted from signature if not posted -->
+<!-- <argument>-SaveIncludedDocument</argument> <argument>on</argument> -->
+
+<!-- (optional) additional params to post (custom specific, e.g. "id" and "caller") -->
+<argument>-PostParams</argument> <argument>id,caller</argument>
+<argument>-id</argument> <argument>id-value</argument>
+<argument>-caller</argument> <argument>caller-value</argument>
+
+<!-- (optional) call this URL after posting the signature -->
+<!-- <argument>-FinishURL</argument> <argument>https://www.seccommerce.com/</argument> -->
+
+<!-- call this URL on user cancellation -->
+<argument>-CancelURL</argument> <argument>https://www.seccommerce.com/</argument>
+
+<!-- call this URL on fatal errors -->
+<argument>-ErrorURL</argument> <argument>https://www.seccommerce.com/</argument>
+
+<!-- (optional) do not display CancelURL, FinishURL and ErrorURL in the browser but only retrieve 
+the content of that URL from the web server and exit. You may programm the web server to display
+a message to the user in the correct browser tab then. "on" or "off" -->
+<!-- <argument>-ShowUrlsInBrowser</argument> <argument>off</argument> -->
+
+</application-desc>
+</jnlp>

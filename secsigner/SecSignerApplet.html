@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html;CHARSET=iso-8859-1">
+<TITLE>SecCommerce SecSignerApplet</TITLE>
+</HEAD>
+<BODY BGCOLOR="white">
+<P>
+<br><br>
+
+<!-- Codebase and archives of SecSigner -->
+<APPLET codebase="." CODE="seccommerce.secsigner.applet.SecSignerApplet" archive="SecSigner.jar,SecSignerExt.jar" WIDTH="200" HEIGHT="20" MAYSCRIPT>
+
+<!-- Optional Init-Parameter. If this parameter is set with value 'on', no document will be signed, but the user's certificates will be posted to given 'PostURL' -->
+<PARAM NAME="Init" VALUE="off">
+
+<!-- Specify an URL _OR_ the document to be signed _OR_ fileopen -->
+<PARAM NAME="DocumentURL" VALUE="fileopen:*.*">
+<!-- <PARAM NAME="Document" VALUE="<html>Dies ist ein <b>Test</b>, der einen zu unterzeichnenden Text innerhalb eines HTML-Dokumentes enthaelt.</html>"> -->
+<!-- <PARAM NAME="DocumentBase64" VALUE="PGh0bWw+RGllcyBpc3QgZWluIDxiPlRlc3Q8L2I+LCBkZXIgZWluZW4genUgdW50ZXJ6ZWljaG5lbmRlbiBUZXh0IGlubmVyaGFsYiBlaW5lcyBIVE1MLURva3VtZW50ZXMgZW50aGFlbHQuPC9odG1sPgo="> -->
+		    
+<!-- Optional: Specify a document type: text=0, HTML=1, binary=2, image=3, PDF=4, XML=12, RTF=13, ZIP=14, ZKS=15  (0-14 will be detected automatically) -->
+<!-- <PARAM NAME="DocumentType" VALUE="0"> -->
+
+<!-- Optional: Specify a URL (OldSignatureURL) _OR_ the old signature (Base64OldSignature) -->
+<!-- <PARAM NAME="OldSignatureURL" VALUE="http://dev.seccommerce.de/signature.pkcs7 "> -->
+<!-- <PARAM NAME="Base64OldSignature" VALUE="MII.."> -->
+
+<!-- ID of the desired signature format: 0 = PKCS#7, 3 = PDF, 4 = XML-DSig, 5 = embedded PKCS#7 -->
+<PARAM NAME="SignatureFormatType" VALUE="0">
+
+<!-- Only for XML-DSig: XPath to the XML node under which the signature node shall be inserted. If null then the 
+     signature node will be inserted directly below the root node. Value is Base64 encoded. Example "/descendant::*[local-name()='BGSERZLayer'][1]" -->
+<!-- PARAM NAME="XmlDSigNodePath" VALUE="/descendant::*[local-name()='BGSERZLayer'][1]" -->     
+<!-- Alternative: <PARAM NAME="XmlDSigNodePathBase64" VALUE="L2Rlc2NlbmRhbnQ6OipbbG9jYWwtbmFtZSgpPSdCR1NFUlpMYXllciddWzFd" -->
+          
+<!-- filter method: 0 intersect, 1 subtract, 2 union -->
+<!-- PARAM NAME="XmlDSigTransformMethod.0" VALUE="1" -->       
+<!-- filter expressions to specify the XML nodes to be signed. If null then such 
+     a filter will not be created. Example "/descendant::*[local-name()='BGSERZLayer']" -->
+<!-- PARAM NAME="XmlDSigXPathExpression.0" VALUE="here()/ancestor-or-self::*/dsig:Signature" -->
+<!-- <PARAM NAME="XmlDSigXPathExpressionBase64.0" VALUE="aGVyZSgpL2FuY2VzdG9yLW9yLXNlbGY6OiovZHNpZzpTaWduYXR1cmU=" -->
+
+<!-- filter method: 0 intersect, 1 subtract, 2 union -->
+<!-- PARAM NAME="XmlDSigTransformMethod.1" VALUE="0">
+<!-- PARAM NAME="XmlDSigXPathExpression.1" VALUE="/descendant::*[local-name()='BGSERZLayer']">
+<!-- PARAM NAME="XmlDSigXPathExpressionBase64.1" VALUE="L2Rlc2NlbmRhbnQ6OipbbG9jYWwtbmFtZSgpPSdCR1NFUlpMYXllcidd" -->
+
+<!-- namespace mappings to ensure the given xpath expression can be validated. all namespace mappings belong to a transformation filter specified
+     by the first index. the key-->
+<!-- PARAM NAME="XmlDSigNameSpace.1.Key.0" VALUE="dsig" -->
+<!-- PARAM NAME="XmlDSigNameSpace.1.Value.0" VALUE="http://www.w3.org/2000/09/xmldsig#" -->
+
+<!-- Only for XML-DSig: XMLDSig signature ID: This ID is inserted as id value in signature element node -->
+<!-- PARAM NAME="XmlDSigSignatureId" VALUE="12345678-0" -->             
+
+             
+<!-- Post signature and additional params to an URL, it posts "Signature=..." as a base64 coded PKCS7 object -->
+<!-- <PARAM NAME="PostURL" VALUE="http://dev.seccommerce.de/servlet/SecSignerPost"> -->
+
+<!-- (optional) Post signed data: "on" or "off" -->
+<PARAM NAME="PostSignedData" VALUE="on">
+
+<!-- (optional) Post document file name: "on" or "off" -->
+<PARAM NAME="PostFileName" VALUE="off">
+
+<!-- (optional) Post the certificates from the smart card: "on" or "off" -->
+<PARAM NAME="PostCertificates" VALUE="off">
+
+<!-- (optional) additional params to post (custom specific, e.g. "id" and "caller") -->
+<PARAM NAME="PostParams" VALUE="id,caller">
+<PARAM NAME="id" VALUE="id-value">
+<PARAM NAME="caller" VALUE="caller-value">
+
+<!-- (optional) call this URL after posting the signature -->
+<PARAM NAME="FinishURL" VALUE="html/SecSignerApplet_exit.html">
+
+<!-- (optional) target of FinishURL -->
+<PARAM NAME="FinishURLTarget" VALUE="">
+
+<!-- call this URL on user cancellation -->
+<PARAM NAME="CancelURL" VALUE="html/SecSignerApplet_cancel.html">
+
+<!-- (optional) target of CancelURL -->
+<PARAM NAME="CancelURLTarget" VALUE="">
+
+<!-- call this URL on fatal errors -->
+<PARAM NAME="ErrorURL" VALUE="html/SecSignerApplet_error.html">
+
+<!-- (optional) target of ErrorURL -->
+<PARAM NAME="ErrorURLTarget" VALUE="">
+
+<font color=red><b>Ihr Browser unterst&uuml;tzt offenbar noch keine Java-Anwendungen. Bitte installieren Sie ein aktuelles <a href="http://www.java.com/de">Java-Runtime-Environment</a></b></font>
+</APPLET>
+
+</BODY>
+
+</HTML>

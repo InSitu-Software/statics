@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenv="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://seccommerce.de/ws/SecPKI/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://seccommerce.de/ws/SecPKI/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema elementFormDefault="qualified" targetNamespace="http://seccommerce.de/ws/SecPKI/">
+      <xsd:element name="sign">
+        <xsd:complexType>
+          <xsd:all>
+            <xsd:element minOccurs="0" maxOccurs="1" name="signReq" type="tns:SignReq" />
+          </xsd:all>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="ArrayOfVerificationReports">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="VerificationReportsElem" nillable="true" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="NameSpacePrefixDefs">
+        <xsd:all>
+          <xsd:element minOccurs="0" maxOccurs="1" name="Prefix" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Uri" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfNameSpacePrefixDefs">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="NameSpacePrefixDefsElem" nillable="true" type="tns:NameSpacePrefixDefs" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="XmlDSigTransformFilter">
+        <xsd:all>
+          <xsd:element minOccurs="0" maxOccurs="1" name="TransformMethod" type="xsd:int" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="TransformMethodString" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="XPathExpression" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="NameSpacePrefixDefs" type="tns:ArrayOfNameSpacePrefixDefs" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfXmlDSigTransformFilter">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="XmlDSigTransformFilterElem" nillable="true" type="tns:XmlDSigTransformFilter" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfEvidenceRecords">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="EvidenceRecordsElem" nillable="true" type="xsd:base64Binary" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfEvidenceRecordFileNames">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="EvidenceRecordFileNamesElem" nillable="true" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="PDFAnnotation">
+        <xsd:all>
+          <xsd:element minOccurs="0" maxOccurs="1" name="PdfSigImage" type="xsd:base64Binary" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PdfLinkImage" type="xsd:base64Binary" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PdfSigReason" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PdfSigPadding" type="xsd:int" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PdfLinkUrl" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="RootDir" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PdfSigHeight" type="xsd:int" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PdfSigWidth" type="xsd:int" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PdfShowSignerIcon" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PdfSigAnnotLabels" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PdfSigBackgroundImage" type="xsd:base64Binary" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PdfDisplayAnnotation" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PdfSigShowDate" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PdfSignatureSignedImage" type="xsd:base64Binary" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PdfSigImageText" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PdfSigLocation" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PdfSignatureTextAnnot" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PdfSignatureSignerIcon" type="xsd:base64Binary" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PdfSigPositionInFormField" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PdfSigPosition" type="xsd:int" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PdfTransparentBackground" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PdfScaleSigImage" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PdfSigTextSizeAndPosition" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="InvertPageRotation" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PdfShowSignedImage" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PdfSigBackgroundImageTextOverlay" type="xsd:boolean" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="SignatureRecord">
+        <xsd:all>
+          <xsd:element minOccurs="0" maxOccurs="1" name="Signature" type="xsd:base64Binary" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Timestamp" type="xsd:base64Binary" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Certificate" type="xsd:base64Binary" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="HashAlgorithm" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="VerificationReports" type="tns:ArrayOfVerificationReports" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="SignatureCiphered" type="xsd:base64Binary" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="VerificationReportXml" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="DocumentFileName" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="VerificationReport" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="SignatureFileName" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="XmlDSigNameSpaceName" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="XmlDSigTransformFilter" type="tns:ArrayOfXmlDSigTransformFilter" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="SignatureFormatType" type="xsd:int" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="XmlDSigNodePath" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="EvidenceRecords" type="tns:ArrayOfEvidenceRecords" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="SignersProfessionInfo" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="OverallVerificationReport" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="XmlDSigReferenceUri" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="IncludeSignatureIntoPDF" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="IncludeToBeSignedData" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="IncludeDocument" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="EvidenceRecordFileNames" type="tns:ArrayOfEvidenceRecordFileNames" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="IncludeSignersCertificate" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="SignatureUrl" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PDFAnnotation" type="tns:PDFAnnotation" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="OldSignature" type="xsd:base64Binary" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="DocumentUrl" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Document" type="xsd:base64Binary" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="DataUrl" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="DocumentType" type="xsd:int" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="CipheredData" type="xsd:base64Binary" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Description" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="SignatureID" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PssPadding" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Charset" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="NumberOfSigners" type="xsd:int" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="DocumentFileNameExtension" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="SignatureDecrypted" type="xsd:base64Binary" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="DataToSignCiphered" type="xsd:base64Binary" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="OcspResponseFirstSigner" type="xsd:base64Binary" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="DocumentCiphered" type="xsd:base64Binary" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="InputStreamNull" type="xsd:boolean" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfSignatureRecord">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="SignatureRecordElem" nillable="true" type="tns:SignatureRecord" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfCipherCert">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="CipherCertElem" nillable="true" type="xsd:base64Binary" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfAttributeCert">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="AttributeCertElem" nillable="true" type="xsd:base64Binary" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="SignReq">
+        <xsd:all>
+          <xsd:element minOccurs="0" maxOccurs="1" name="SignatureRecord" type="tns:ArrayOfSignatureRecord" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="CipherCert" type="tns:ArrayOfCipherCert" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="SignatureKey" type="xsd:base64Binary" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="SignatureCert" type="xsd:base64Binary" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="AttributeCert" type="tns:ArrayOfAttributeCert" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Modal" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="AlwaysOnTop" type="xsd:boolean" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:element name="SignResult">
+        <xsd:complexType>
+          <xsd:all>
+            <xsd:element minOccurs="0" maxOccurs="1" name="SignRes" type="tns:SignRes" />
+          </xsd:all>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="SignRes">
+        <xsd:all>
+          <xsd:element minOccurs="0" maxOccurs="1" name="SignatureRecord" type="tns:ArrayOfSignatureRecord" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:element name="verify">
+        <xsd:complexType>
+          <xsd:all>
+            <xsd:element minOccurs="0" maxOccurs="1" name="verifyReq" type="tns:VerifyReq" />
+          </xsd:all>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="ArrayOfExternSignersCertsDer">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ExternSignersCertsDerElem" nillable="true" type="xsd:base64Binary" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="VerifyReq">
+        <xsd:all>
+          <xsd:element minOccurs="0" maxOccurs="1" name="SignatureRecord" type="tns:ArrayOfSignatureRecord" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ExternSignersCertsDer" type="tns:ArrayOfExternSignersCertsDer" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="AllowSig" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="OfferFileOpenDlg" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="OcspMandatory" type="xsd:boolean" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:element name="VerifyResult">
+        <xsd:complexType>
+          <xsd:all>
+            <xsd:element minOccurs="0" maxOccurs="1" name="VerifyRes" type="tns:VerifyRes" />
+          </xsd:all>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="VerifyRes">
+        <xsd:all>
+          <xsd:element minOccurs="0" maxOccurs="1" name="ResultCode" type="xsd:int" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="SignatureRecord" type="tns:ArrayOfSignatureRecord" />
+        </xsd:all>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="SignReq">
+    <wsdl:part name="parameters" element="tns:sign" />
+  </wsdl:message>
+  <wsdl:message name="SignRes">
+    <wsdl:part name="parameters" element="tns:SignResult" />
+  </wsdl:message>
+  <wsdl:message name="VerifyReq">
+    <wsdl:part name="parameters" element="tns:verify" />
+  </wsdl:message>
+  <wsdl:message name="VerifyRes">
+    <wsdl:part name="parameters" element="tns:VerifyResult" />
+  </wsdl:message>
+  <wsdl:portType name="SecSignerSoapPortType">
+    <wsdl:operation name="sign">
+      <wsdl:input message="tns:SignReq" />
+      <wsdl:output message="tns:SignRes" />
+    </wsdl:operation>
+    <wsdl:operation name="verify">
+      <wsdl:input message="tns:VerifyReq" />
+      <wsdl:output message="tns:VerifyRes" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SecSignerSoapBinding" type="tns:SecSignerSoapPortType">
+    <soapenv:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="sign">
+      <soapenv:operation soapAction="sign" />
+      <wsdl:input>
+        <soapenv:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soapenv:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="verify">
+      <soapenv:operation soapAction="verify" />
+      <wsdl:input>
+        <soapenv:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soapenv:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SecSigner">
+    <wsdl:port name="SecSignerSoap" binding="tns:SecSignerSoapBinding">
+      <soapenv:address location="http://localhost:48204/" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

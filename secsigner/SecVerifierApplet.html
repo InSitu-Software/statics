@@ -1,0 +1,59 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html;CHARSET=iso-8859-1">
+<TITLE>SecCommerce SecVerifierApplet</TITLE>
+</HEAD>
+<BODY BGCOLOR="white">
+<br><br>
+
+<APPLET codebase="." CODE="seccommerce.secsigner.applet.SecVerifierApplet" archive="SecSigner.jar,SecSignerExt.jar" WIDTH="200" HEIGHT="20" MAYSCRIPT>
+
+<!-- <PARAM NAME="DocumentURL" VALUE="test/Signaturdokument.html">  -->
+<!-- <PARAM NAME="SignatureURL" VALUE="test/Signaturdokument.html.pkcs7">  -->
+<!-- <PARAM NAME="TimestampURL" VALUE="test/Signaturdokument.tsr">  -->
+<!-- <PARAM NAME="OCSPResponseURL" VALUE="test/Signaturdokument.ors">  -->
+<!-- <PARAM NAME="Base64Document" VALUE=""> -->
+<!-- <PARAM NAME="Base64Signature" VALUE="MIIEIgYJKoZIhvcNAQcCoIIEEzCCBA8CAQExCzAJBgUrDgMCGgUAMC4GCSqGSIb3DQEHAaAhBB9EYXMgaXN0IG1laW5lIFdpbGxlbnNlcmts5HJ1bmc6oIICmzCCApcwggIDoAMCAQICBC+u6DgwCgYGKyQDAwECBQAwfTELMAkGA1UEBhMCREUxHDAaBgNVBAoUE0RldXRzY2hlIFRlbGVrb20gQUcxHzAdBgNVBAsUFlByb2R1a3R6ZW50cnVtIFRlbGVTZWMxLzAMBgcCggYBCgcUEwExMB8GA1UEAxQYVGVsZVNlYyBQS1MgU2lnRyBDQSAxOlBOMCIYDzIwMDEwNzAyMDc1MTI0WhgPMjAwNDA3MDIwNzUxMjRaMDQxCzAJBgNVBAYTAkRFMSUwDAYHAoIGAQoHFBMBMTAVBgNVBAMUDlp1cmhlaWRlLCBKZW5zMIGhMA0GCSqGSIb3DQEBAQUAA4GPADCBiwKBgQCBJqwqVGzoHPeAZi6c89g5eutrDhFo2KqDki06g1X/NbaNhGg44phcvtYC9mtxF+AxFBVE7m8z4K4HYlQt7WvWe/A+Cy2bHQH/SGXjeBMUhNzFfQArGtb6wiQlky4jZQQeB8pCicMln/s522HVXadKeV0/Cl1Qu41j+7y0y+1JAwIFAMAAAAGjbTBrMA4GA1UdDwEB/wQEAwIGwDBJBgNVHREEQjBAoCAGBwKCBgEKAwCgFTATMREwDwYDVQQEFAhadXJoZWlkZaAcBgcCggYBCgMAoBEwDzENMAsGA1UEKhQESmVuczAOBgcCggYBCgwABAMBAf8wCgYGKyQDAwECBQADgYEAgdDxRkBZAA6N0hJrJwah/LPL0LVZ7xTXfmJY5uc4s0gg9HQRMc3Hze31xux/OtcIB26+Z+lW9FYdum8T2Fi58sKSyrPELw5VAyVQItGmjXyl2hJRsdpjNNOAx9XXhJf4CsH8LW2YbdGWWGPabSq7iq7zBY6SYVMUwzsMiBPzL04xggEsMIIBKAIBATCBhTB9MQswCQYDVQQGEwJERTEcMBoGA1UEChQTRGV1dHNjaGUgVGVsZWtvbSBBRzEfMB0GA1UECxQWUHJvZHVrdHplbnRydW0gVGVsZVNlYzEvMAwGBwKCBgEKBxQTATEwHwYDVQQDFBhUZWxlU2VjIFBLUyBTaWdHIENBIDE6UE4CBC+u6DgwCQYFKw4DAhoFADANBgkqhkiG9w0BAQEFAASBgDNpUBT/L6sf5CCScmH/GBtMfQib+wjZTvDkdnssuMFm3UM3j2maD9v3F+USKA+LFkAo8Ql/5tP0El/zhgz7LzFDm9ZLsb7znY0LmMeJbr+ri6pEqrvLcac8r+GQVJXtPBJFjUna745pY9vAYnA2dm4x9ceg/HdQ+PcGf2n026mv"> -->
+<!-- <PARAM NAME="Base64Timestamp" VALUE=""> -->
+<!-- <PARAM NAME="Base64OCSPResponse" VALUE=""> -->
+	
+<!-- Only for XML-DSig: XPath to the signature node which shall be verified. If null then all 
+     signature nodes will be checked. Example "/test:testdoc/test:car" -->
+<PARAM NAME="XmlDSigNodePathBase64" VALUE="L3Rlc3Q6dGVzdGRvYy90ZXN0OmNhcg==">
+        
+<!-- Post signature and additional params to an URL, it posts "Signature=..." as a base64 coded PKCS7 object -->
+<!-- <PARAM NAME="PostURL" VALUE="http://dev.seccommerce.de/servlet/SecSignerPost"> -->
+
+<!-- (optional) Post signed data: "on" or "off" -->
+<!-- PARAM NAME="PostSignedData" VALUE="on" -->
+
+<!-- Save data extracted from signature if not posted -->
+<PARAM NAME="SaveIncludedDocument" VALUE="on">
+
+<!-- (optional) additional params to post (custom specific, e.g. "id" and "caller") -->
+<!-- PARAM NAME="PostParams" VALUE="id,caller" -->
+<!-- PARAM NAME="id" VALUE="id-value" -->
+<!-- PARAM NAME="caller" VALUE="caller-value" -->
+
+<!-- (optional) call this URL after posting the signature -->
+<PARAM NAME="FinishURL" VALUE="html/SecVerifierApplet_ok.html">
+
+<!-- (optional) target of FinishURL -->
+<PARAM NAME="FinishURLTarget" VALUE="">
+
+<!-- (optional) call this URL on user cancellation -->
+<PARAM NAME="CancelURL" VALUE="html/SecVerifierApplet_cancel.html">
+
+<!-- (optional) target of CancelURL -->
+<PARAM NAME="CancelURLTarget" VALUE="">
+
+<!-- (optional) call this URL on fatal errors -->
+<PARAM NAME="ErrorURL" VALUE="html/SecVerifierApplet_error.html">
+
+<!-- (optional) target of ErrorURL -->
+<PARAM NAME="ErrorURLTarget" VALUE="">
+
+<font color=red><b>Ihr Browser unterst&uuml;tzt offenbar noch keine Java-Anwendungen. Bitte installieren Sie ein aktuelles <a href="http://www.java.com/de">Java-Runtime-Environment</a></b></font>
+
+</BODY>
+</HTML>

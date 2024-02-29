@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp
+  spec="1.0+"
+  codebase="http://replaceyourhost.yourdomain.topleveldomain/secSignerWebStart/"
+  href="secSignerSign.jnlp">
+<information>
+  <title>SecSigner</title>
+  <vendor>SecCommerce Informationssysteme GmbH</vendor>
+  <homepage href="https://www.seccommerce.com/"/>
+</information>
+<security><all-permissions/></security>
+<resources>
+  <j2se version="1.6+"/>
+  <jar href="SecSigner.jar"/>
+  <jar href="SecSignerExt.jar"/>
+</resources>
+<application-desc main-class="seccommerce.secsigner.webstart.SecSignerWebStart">
+
+<!-- Optional Init-Parameter. If this parameter is set with value 'on', no document will be signed, but the user's certificates will be posted to given 'PostURL' -->
+<argument>-Init</argument> <argument>off</argument>
+
+<!-- Specify an URL _OR_ the document to be signed _OR_ fileopen -->
+<argument>-DocumentURL</argument> <argument>fileopen:*.*</argument>
+  
+<!--  <argument>-Document</argument> <argument><html>Dies ist ein <b>Test</b>, der einen zu unterzeichnenden Text innerhalb eines HTML-Dokumentes enthaelt.</html></argument>-->
+<!--  <argument>-DocumentBase64</argument> <argument></argument>-->
+		    
+<!-- Optional: Specify a document type: text=0, HTML=1, binary=2, image=3, PDF=4, XML=12, RTF=13, ZIP=14, ZKS=15  (0-14 will be detected automatically) -->
+<!-- <argument>-DocumentType</argument> <argument>0</argument> -->
+
+<!-- Optional: Specify a URL (OldSignatureURL) _OR_ the old signature (Base64OldSignature) -->
+<!-- <argument>-OldSignatureURL</argument> <argument>http://dev.seccommerce.de/signature.pkcs7 </argument> -->
+<!-- <argument>-Base64OldSignature</argument> <argument>MII..</argument> -->
+
+<!-- ID of the desired signature format: 0 = PKCS#7, 3 = PDF, 4 = XML-DSig, 5 = embedded PKCS#7 -->
+<argument>-SignatureFormatType</argument> <argument>0</argument>
+
+<!-- Only for XML-DSig: XPath to the XML node under which the signature node shall be inserted. If null then the 
+     signature node will be inserted directly below the root node. Value is Base64 encoded. Example "/descendant::*[local-name()='BGSERZLayer'][1]" -->
+<!--   <argument>-XmlDSigNodePath</argument> <argument>/descendant::*[local-name()='BGSERZLayer'][1]</argument> -->
+<!-- Alternative: <argument>-XmlDSigNodePathBase64</argument> <argument></argument>  -->
+
+<!-- filter method: 0 intersect, 1 subtract, 2 union -->
+<!--  <argument>-XmlDSigTransformMethod.0</argument> <argument>1</argument>-->    
+
+<!-- filter expressions to specify the XML nodes to be signed. If null then such 
+     a filter will not be created. Example "/descendant::*[local-name()='BGSERZLayer']" -->
+<!--  <argument>-XmlDSigXPathExpression.0</argument> <argument>here()/ancestor-or-self::*/dsig:Signature</argument> -->
+<!--  <argument>-XmlDSigXPathExpressionBase64.0</argument> <argument></argument> -->
+
+<!-- filter method: 0 intersect, 1 subtract, 2 union -->
+<!-- <argument>-XmlDSigTransformMethod.1</argument> <argument>0</argument> -->
+<!-- <argument>-XmlDSigXPathExpression.1</argument> <argument>/descendant::*[local-name()='BGSERZLayer']</argument> -->
+<!-- <argument>-XmlDSigXPathExpressionBase64.1</argument> <argument></argument> -->
+
+<!-- namespace mappings to ensure the given xpath expression can be validated. all namespace mappings belong to a transformation filter specified
+     by the first index. the key-->
+<!-- <argument>-XmlDSigNameSpace.1.Key.0</argument> <argument>dsig</argument> -->
+<!-- <argument>-XmlDSigNameSpace.1.Value.0</argument> <argument>http://www.w3.org/2000/09/xmldsig#</argument> -->
+
+<!-- Only for XML-DSig: XMLDSig signature ID: This ID is inserted as id value in signature element node -->
+<!-- <argument>-XmlDSigSignatureId</argument> <argument>12345678-0</argument> -->
+             
+<!-- Post signature and additional params to an URL, it posts "Signature=..." as a base64 coded PKCS7 object -->
+<argument>-PostURL</argument> <argument>http://localhost/seccom/</argument> 
+
+<!-- (optional) Post signed data: "on" or "off" -->
+<argument>-PostSignedData</argument> <argument>on</argument>
+
+<!-- (optional) Post document file name: "on" or "off" -->
+<argument>-PostFileName</argument> <argument>off</argument>
+
+<!-- (optional) Post the certificates from the smart card: "on" or "off" -->
+<argument>-PostCertificates</argument> <argument>off</argument>
+
+<!-- (optional) additional params to post (custom specific, e.g. "id" and "caller") -->
+<argument>-PostParams</argument> <argument>id,caller</argument>
+<argument>-id</argument> <argument>id-value</argument>
+<argument>-caller</argument> <argument>caller-value</argument>
+
+<!-- (optional) call this URL after posting the signature -->
+<!-- <argument>-FinishURL</argument> <argument>https://www.seccommerce.com/</argument> -->
+
+<!-- call this URL on user cancellation -->
+<argument>-CancelURL</argument> <argument>https://www.seccommerce.com/</argument>
+
+<!-- call this URL on fatal errors -->
+<argument>-ErrorURL</argument> <argument>https://www.seccommerce.com/</argument>
+
+<!-- (optional) do not display CancelURL, FinishURL and ErrorURL in the browser but only retrieve 
+the content of that URL from the web server and exit. You may programm the web server to display
+a message to the user in the correct browser tab then. "on" or "off" -->
+<!-- <argument>-ShowUrlsInBrowser</argument> <argument>off</argument> -->
+
+</application-desc>
+</jnlp>
